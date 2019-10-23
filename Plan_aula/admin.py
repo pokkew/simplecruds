@@ -3,4 +3,4 @@ from .models import PlanA
 
 # Register your models here.
 
-admin.site.register(PlanA())
+admin.site.register(PlanA)
