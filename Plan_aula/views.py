@@ -6,7 +6,7 @@ from Plan_aula.models import PlanA
 class PlanAForm(ModelForm):
     class Meta:
         model = PlanA
-        fields = '__all__'
+        fields = ['uc','evento','ch','obj','docente']
 
 def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
     plana = PlanA.objects.all()

@@ -2,17 +2,37 @@
 
 {% block content %}
 
-<h2><a href="{% url 'books_fbv:book_list' %}">Books FBV</a></h2>
+<h2><a href="{% url 'Plan_aula:plan_list' %}">Planos de aula</a></h2>
 
-<ul>
-    {% for book in object_list %}
-    <li>{{ plana.name }}  ({{ book.pages }} Pages)
-    <a href="{% url 'books_fbv:book_edit' book.id %}">edit</a>
-    <a href="{% url 'books_fbv:book_delete' book.id %}">delete</a>
-    </li>
-    {% endfor %}
-</ul>
+<table class="table" border="1">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">UC</th>
+            <th scope="col">Evento</th>
+            <th scope="col">CH</th>
+            <th scope="col">Objetivo</th>
+            <th scope="col">Docente</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for plana in object_list %}
+        <tr>
+            <td>{{ plana.uc }}</td>
+            <td>{{ plana.evento }}</td>
+            <td>{{ plana.ch }}</td>
+            <td>{{ plana.obj }}</td>
+            <td>{{ plana.docente }}</td>
+            <td><a class="btn btn-primary">view</a></td>
+            <td><a class="btn btn-primary">edit</a></td>
+            <td><a class="btn btn-primary">delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<a href="{% url 'books_fbv:book_new' %}">New</a>
+<a href="{% url 'Plan_aula:plan_new' %}">New</a>
 
 {% endblock %}
