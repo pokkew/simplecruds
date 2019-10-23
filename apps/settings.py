@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'theme',
     'books_cbv',
     'books_fbv',
-    'books_fbv_user',    
+    'books_fbv_user',
+    'Plan_aula',    
 ]
 
 MIDDLEWARE = [
