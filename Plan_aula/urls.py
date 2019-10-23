@@ -2,6 +2,7 @@ from django.urls import path, include
 
 from Plan_aula import views
 
+
 app_name = 'Plan_aula'
 
 urlpatterns = [

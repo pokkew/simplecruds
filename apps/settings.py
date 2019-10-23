@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'books_cbv',
     'books_fbv',
     'books_fbv_user',
-    'Plan_aula',    
+    'Plan_aula',
+    'itemP',    
 ]
 
 MIDDLEWARE = [

@@ -15,6 +15,7 @@
             <th scope="col">Objetivo</th>
             <th scope="col">Docente</th>
             <th scope="col">Edit</th>
+            <th scope="col">Itens</th>
             <th scope="col">Delete</th>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
             <td>{{ plana.obj }}</td>
             <td>{{ plana.docente }}</td>
             <td><a class="btn btn-primary">edit</a></td>
+            <td><a class="btn btn-primary" href="{% url 'Plan_aula:itemP:itemp_list' plana.id %} ">Itens</a></td>
             <td><a class="btn btn-primary">delete</a></td>
         </tr>
         {% endfor %}
