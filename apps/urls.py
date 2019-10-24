@@ -9,5 +9,5 @@ urlpatterns = [
     path('books_fbv/', include('books_fbv.urls', namespace='books_fbv')),
     path('books_fbv_user/', include('books_fbv_user.urls', namespace='books_fbv_user')),
     path('planos/', include('Plan_aula.urls', namespace='Plan_aula')),
-    path('', views.home),
+    path('', views.home, name='home'),
 ]
