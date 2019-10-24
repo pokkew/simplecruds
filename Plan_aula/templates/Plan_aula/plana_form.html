@@ -1,12 +1,15 @@
 {% extends "base.html" %}
-
+{% load bootstrap %}
 {% block content %}
-
-<h2><a href="{% url 'Plan_aula:PlanA_list' %}">Planos de aula</a>: Edit</h2>
-
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+<div style="text-align: center;" class="container">
+    <h2><a href="{% url 'Plan_aula:plan_list' %}">Planos de aula</a></h2>
+</div>
+<div class="container">
+    <form method="post">{% csrf_token %}
+        {{ form|bootstrap }}
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        <a class="btn btn-danger" href="{% url 'Plan_aula:plan_list' %}">Voltar</a>
+    </form>
+</div>
 
 {% endblock %}

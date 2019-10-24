@@ -2,11 +2,19 @@
 
 {% block content %}
 
-<a href="{% url 'books_cbv:book_list' %}">Class Based Views</a><br>
+<!-- <a href="{% url 'books_cbv:book_list' %}">Class Based Views</a><br>
 <a href="{% url 'books_fbv:book_list' %}">Function Based Views</a><br>    
 <a href="{% url 'books_fbv_user:book_list' %}">Function Based Views with User Access</a><br> 
-   
+    -->
+    <div style="background-color: blueviolet;padding: 50px;" class="container-fluid text-center rounded">
+            <h1 style="color: cornsilk;">
+                SISTEMA DE GERENCIAMENTO DE PLANO DE AULA
+            </h1>
+        </div>
 
-<a href="{% url 'Plan_aula:plan_list' %}">PLANO DE AULA</a><br>
-
+    <div class="container-fluid text-center">
+    <h1>
+        <a class="btn btn-dark" href="{% url 'Plan_aula:plan_list' %}">PLANO DE AULA</a><br>
+    </h1>
+</div>
 {% endblock %}

@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h2><a href="{% url 'books_fbv:book_list' %}">Books FBV</a>: Delete?</h2>
+<h2><a href="{% url 'Plan_aula:plan_list' %}">EXCLUIR PLANO DE AULA ?</a></h2>
 
 <form method="post">{% csrf_token %}
-    Are you sure you want to delete "{{ object }}" ?<br/>
+    Você tem certeza que deseja excluir esse plano de aula: "{{ object }}" ?<br/>
     <input type="submit" value="Delete" />
 </form>
 

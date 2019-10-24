@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<div class="container">
+<div style="text-align: center;" class="container">
     <h2><a href="{% url 'Plan_aula:plan_list' %}">Planos de aula</a></h2>
 </div>
 <div class="container"></div>
     <table class="table" border="1">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">UC</th>
+            <th scope="col">Unidade Curricular</th>
             <th scope="col">Evento</th>
             <th scope="col">CH</th>
             <th scope="col">Objetivo</th>
             <th scope="col">Docente</th>
-            <th scope="col">Edit</th>
+            <th scope="col">Editar</th>
             <th scope="col">Itens</th>
             <th scope="col">Delete</th>
         </tr>
@@ -27,15 +27,15 @@
             <td>{{ plana.ch }}</td>
             <td>{{ plana.obj }}</td>
             <td>{{ plana.docente }}</td>
-            <td><a class="btn btn-primary">edit</a></td>
+            <td><a class="btn btn-primary" href="{% url 'Plan_aula:plan_edit' plana.id %}">Editar</a></td>
             <td><a class="btn btn-primary" href="{% url 'Plan_aula:itemP:itemp_list' plana.id %} ">Itens</a></td>
-            <td><a class="btn btn-primary">delete</a></td>
+            <td><a class="btn btn-primary" href="{% url 'Plan_aula:plan_delete' plana.id %} ">Del</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 </div>
 <div class="container">
-    <a href="{% url 'Plan_aula:plan_new' %}">Novo</a>
+    <a class="btn btn-primary"  href="{% url 'Plan_aula:plan_new' %}">Novo</a>
 </div>
 {% endblock %}
