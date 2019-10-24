@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div style="text-align: center;" class="container">
+    <h2><a>Planos de aula</a></h2>
+</div>
+<div class="container">
+    <form method="post">{% csrf_token %}
+        {{ form|bootstrap }}
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        <a class="btn btn-danger" href="{% url 'Plan_aula:plan_list' %}">Voltar</a>
+    </form>
+</div>
+
+{% endblock %}

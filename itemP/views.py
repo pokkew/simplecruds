@@ -13,4 +13,10 @@ def itemP_list(request,pk, template_name='itemP/itemp_list.html'):
     data = {}
     data['object_list'] = itemplan
     return render(request,template_name,data)
-   
+
+def itemP_create(request, template_name='Plan_aula/plana_form.html'):
+    form = Item_planForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('itemP:itemp_list')
+    return render(request, template_name, {'form':form})
