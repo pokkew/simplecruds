@@ -32,7 +32,8 @@
 </table>
 </div>
 <div class="container">
-    <a class="btn btn-primary" href="{% url 'Plan_aula:plan_list' %}" >Voltar</a>
+        <a class="btn btn-primary" href="{% url 'Plan_aula:itemP:itemp_new' object_list.0.plana.id %}" >Novo</a>
+    <a class="btn btn-danger" href="{% url 'Plan_aula:plan_list' %}" >Voltar</a>
 </div>
 
 {% endblock %}
