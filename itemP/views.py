@@ -36,3 +36,11 @@ def itemP_update(request, pkI, template_name='itemP/itemp_form.html'):
         form.save()
         return redirect('Plan_aula:itemP:itemp_list',pk=plano.id)
     return render(request, template_name, {'form':form})
+
+def itemP_delete(request, pkI, template_name='itemP/itemp_confirm_delete.html'):
+    itemplan = get_object_or_404(Item_plan, pk=pkI)
+    plano = PlanA.objects.get(id = itemplan.plana_id)
+    if request.method=='POST':
+        itemplan.delete()
+        return redirect('Plan_aula:itemP:itemp_list',pk=plano.id)
+    return render(request, template_name, {'object':itemplan})

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2><a href="{% url 'Plan_aula:itemP:itemp_edit' object.id %}">EXCLUIR PLANO DE AULA ?</a></h2>
+
+<form method="post">{% csrf_token %}
+    Você tem certeza que deseja excluir esse Item de plano de aula: "{{ object.content }}" ?<br/>
+    <input type="submit" value="Delete" />
+</form>
+
+{% endblock %}
