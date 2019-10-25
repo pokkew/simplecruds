@@ -26,3 +26,13 @@ def itemP_create(request,pk, template_name='itemP/itemp_form.html'):
         form.save()
         return redirect('Plan_aula:itemP:itemp_list',pk=plano.id)
     return render(request, template_name, {'form':form})
+
+def itemP_update(request, pkI, template_name='itemP/itemp_form.html'):
+    itemplan = get_object_or_404(Item_plan, pk=pkI)
+    plano = PlanA.objects.get(id = itemplan.plana_id)
+    form = Item_planForm(request.POST or None, instance=itemplan)
+    form.fields['plana'].disabled = True
+    if form.is_valid():
+        form.save()
+        return redirect('Plan_aula:itemP:itemp_list',pk=plano.id)
+    return render(request, template_name, {'form':form})

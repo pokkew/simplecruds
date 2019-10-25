@@ -24,7 +24,7 @@
       <td>{{ itemp.content }}</td>
       <td>{{ itemp.proced }}</td>
       <td>{{ itemp.recursos }}</td>
-      <td><a class="btn btn-primary">edit</a></td>
+      <td><a class="btn btn-primary" href="{% url 'Plan_aula:itemP:itemp_edit' itemp.id %}">edit</a></td>
       <td><a class="btn btn-primary">delete</a></td>
     </tr>
     {% endfor %}
