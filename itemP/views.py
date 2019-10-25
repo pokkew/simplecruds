@@ -14,6 +14,7 @@ def itemP_list(request,pk, template_name='itemP/itemp_list.html'):
     itemplan = Item_plan.objects.filter(plana_id = pk)
     data = {}
     data['object_list'] = itemplan
+    data['iden'] = pk
     return render(request,template_name,data)
 
 def itemP_create(request,pk, template_name='itemP/itemp_form.html'):
