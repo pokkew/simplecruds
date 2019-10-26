@@ -30,7 +30,7 @@ def PlanA_update(request, pk, template_name='Plan_aula/plana_form.html'):
     return render(request, template_name, {'form':form})
 
 def PlanA_delete(request, pk, template_name='Plan_aula/plana_confirm_delete.html'):
-    plana = get_object_or_404(PlanA, pk=pk)    
+    plana = get_object_or_404(PlanA, pk=pk)
     if request.method=='POST':
         plana.delete()
         return redirect('Plan_aula:plan_list')

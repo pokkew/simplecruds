@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'books_fbv',
     'books_fbv_user',
     'Plan_aula',
-    'itemP',    
+    'itemP',
+    'docentes',
 ]
 
 MIDDLEWARE = [
