@@ -1,8 +1,23 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import TemplateView,ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
-# Create your views here.
-def docente_list(request, template_name='Plan_aula/plana_list.html'):
-    plana = PlanA.objects.all()
-    data = {}
-    data['object_list'] = plana
-    return render(request, template_name, data)
+from docentes.models import Docente
+
+class DocenteList(ListView):
+    model = Docente
+
+class DocenteCreate(CreateView):
+    model = Docente
+    fields = ['nome']
+    success_url = reverse_lazy('docentes:docente_list')
+
+class DocenteUpdate(UpdateView):
+    model = Docente
+    fields = ['nome']
+    success_url = reverse_lazy('docentes:docente_list')
+
+class DocenteDelete(DeleteView):
+    model = Docente
+    success_url = reverse_lazy('docentes:docente_list')

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="background-color: blueviolet;padding: 50px;" class="container-fluid text-center rounded-top">
+    <h1><a style="color: cornsilk;" href="{% url 'docentes:docente_list' %}">Docentes</a></h1>
+</div>
+
+<div class="container"></div>
+<table class="table" border="1">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for docente in object_list %}
+    <tr>
+      <td>{{ docente.nome }}</td>
+      <td><a class="btn btn-primary" href="{% url 'docentes:docente_update' docente.id %}">Editar</a></td>
+      <td><a class="btn btn-primary" href="{% url 'docentes:docente_delete' docente.id %}">Del</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="container">
+  <a class="btn btn-primary" href="{% url 'docentes:docente_create' %}">Novo</a>
+  <a class="btn btn-danger" href="{% url 'home' %}">voltar</a>
+</div>
+
+{% endblock %}
