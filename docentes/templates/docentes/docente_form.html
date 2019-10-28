@@ -2,11 +2,14 @@
 {% load bootstrap %}
 {% block content %}
 
-<h2><a href="{% url 'docentes:docente_list' %}">Docentes</a>: Editar</h2>
-
-<form method="post">{% csrf_token %}
+<div style="background-color: blueviolet;padding: 50px;" class="container-fluid text-center rounded-top">
+    <h1><a style="color: cornsilk;" href="{% url 'docentes:docente_list' %}">Docentes</a></h1>
+</div>
+<form  method="post">{% csrf_token %}
     {{ form|bootstrap }}
-    <input type="submit" value="Submit" />
+    <input class="btn btn-primary" type="submit" value="Salvar" />
+    <a class="btn btn-danger" href="{% url 'docentes:docente_list' %}">voltar</a>
 </form>
+
 
 {% endblock %}
