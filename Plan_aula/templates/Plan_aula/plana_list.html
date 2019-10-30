@@ -5,10 +5,19 @@
 <div style="background-color: blueviolet;padding: 50px;" class="container-fluid text-center rounded-top">
     <h1><a style="color: cornsilk;" href="{% url 'Plan_aula:plan_list' %}">Planos de aula</a></h1>
 </div>
+<div>
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+</div>
 <div class="container"></div>
     <table class="table table-striped" border="1">
     <thead class="thead-dark">
         <tr>
+            <th scope="col">User id</th>
             <th scope="col">Unidade Curricular</th>
             <th scope="col">Evento</th>
             <th scope="col">CH</th>
@@ -22,6 +31,7 @@
     <tbody>
         {% for plana in object_list %}
         <tr>
+            <td>{{ plana.user.id }}</td>
             <td>{{ plana.uc }}</td>
             <td>{{ plana.evento }}</td>
             <td>{{ plana.ch }}</td>

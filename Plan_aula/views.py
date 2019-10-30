@@ -10,9 +10,11 @@ class PlanAForm(ModelForm):
         widgets = {'user': HiddenInput()}
 
 
-
 def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
-    plana = PlanA.objects.all()
+    if request.user.id==1:
+        plana = PlanA.objects.all()
+    else:
+        plana = PlanA.objects.filter(user = request.user)
     data = {}
     data['object_list'] = plana
     return render(request, template_name, data)
@@ -20,7 +22,7 @@ def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
 
 def PlanA_create(request, template_name='Plan_aula/plana_form.html'):
     form = PlanAForm(request.POST or None)
-    form.user = request.user
+    form.fields['user'].initial = request.user.id
     if form.is_valid():
         form.save()
         return redirect('Plan_aula:plan_list')

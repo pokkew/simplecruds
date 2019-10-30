@@ -138,4 +138,5 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/admin/login/'
 
 # my_project/settings.py
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
