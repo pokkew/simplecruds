@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.forms import ModelForm
-
+from django.forms import ModelForm, HiddenInput
 from Plan_aula.models import PlanA
+
 
 class PlanAForm(ModelForm):
     class Meta:
         model = PlanA
-        fields = ['uc','evento','ch','obj','docente']
+        fields = ['uc', 'evento', 'ch', 'obj', 'docente', 'user']
+        widgets = {'user': HiddenInput()}
+
+
 
 def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
     plana = PlanA.objects.all()
@@ -14,12 +17,15 @@ def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
     data['object_list'] = plana
     return render(request, template_name, data)
 
+
 def PlanA_create(request, template_name='Plan_aula/plana_form.html'):
     form = PlanAForm(request.POST or None)
+    form.user = request.user
     if form.is_valid():
         form.save()
         return redirect('Plan_aula:plan_list')
     return render(request, template_name, {'form':form})
+
 
 def PlanA_update(request, pk, template_name='Plan_aula/plana_form.html'):
     plana = get_object_or_404(PlanA, pk=pk)
@@ -28,6 +34,7 @@ def PlanA_update(request, pk, template_name='Plan_aula/plana_form.html'):
         form.save()
         return redirect('Plan_aula:plan_list')
     return render(request, template_name, {'form':form})
+
 
 def PlanA_delete(request, pk, template_name='Plan_aula/plana_confirm_delete.html'):
     plana = get_object_or_404(PlanA, pk=pk)
