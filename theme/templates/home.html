@@ -25,7 +25,9 @@
   <div class="row">
     <a class="btn btn-dark col-4" href="{% url 'Plan_aula:plan_list' %}">PLANO DE AULA</a>
     <a class="col-4"</a>
-    <a class="btn btn-dark col-4" href="{% url 'docentes:docente_list' %}">DOCENTES</a>
+    {% if request.user.is_superuser %}
+      <a class="btn btn-dark col-4" href="{% url 'docentes:docente_list' %}">DOCENTES</a>
+    {% endif %}
   </div>
 </div>
 
