@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm, HiddenInput
 from Plan_aula.models import PlanA
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 
@@ -12,13 +13,19 @@ class PlanAForm(ModelForm):
 
 
 def PlanA_list(request, template_name='Plan_aula/plana_list.html'):
-    if request.user.id==1:
-        plana = PlanA.objects.all()
+    if request.user.id == 1:
+        planlist = PlanA.objects.all()
+        paginator = Paginator(planlist, 5)  # paginação,  Show 3 contacts per page
+        page = request.GET.get('page')
+        plana = paginator.get_page(page)
     else:
-        plana = PlanA.objects.filter(user = request.user)
-    data = {}
-    data['object_list'] = plana
+        planlist = PlanA.objects.filter(user=request.user)
+        paginator = Paginator(planlist, 5)  # paginação,  Show 3 contacts per page
+        page = request.GET.get('page')
+        plana = paginator.get_page(page)
+    data = {'object_list': plana}
     return render(request, template_name, data)
+
 
 def PlanA_create(request, template_name='Plan_aula/plana_form.html'):
     form = PlanAForm(request.POST or None)
@@ -26,7 +33,7 @@ def PlanA_create(request, template_name='Plan_aula/plana_form.html'):
     if form.is_valid():
         form.save()
         return redirect('Plan_aula:plan_list')
-    return render(request, template_name, {'form':form})
+    return render(request, template_name, {'form': form})
 
 def PlanA_update(request, pk, template_name='Plan_aula/plana_form.html'):
     plana = get_object_or_404(PlanA, pk=pk)
