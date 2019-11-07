@@ -12,6 +12,6 @@ urlpatterns = [
     path('planos/', include('Plan_aula.urls', namespace='Plan_aula')),
     path('docentes/', include('docentes.urls', namespace='docentes')),
     path('home/', views.home, name='home'),
-    path('', views.login, name='home'),
+    path('', views.login, name='login'),
     
 ]
